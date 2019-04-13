@@ -1,1 +1,1 @@
-web: gunicorn toudaileague.wsgi
+web: gunicorn tdl.wsgi
