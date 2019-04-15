@@ -128,3 +128,14 @@ DATABASES['default'].update(db_from_env)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# 本番環境とローカルサーバーで分ける
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+# Debug=Falseの時だけ実行する設定
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
