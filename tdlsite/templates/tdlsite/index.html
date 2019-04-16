@@ -1,3 +1,4 @@
+{% load static %} <!-- 静的ファイルを読み込む -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,8 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>東大リーグ</title>
+  <link rel="stylesheet" href="{% static 'tdlsite/css/style.css' %}">
 </head>
 <body>
-
+  <h1>{{title}}</h1>
+  <p>{{message|safe}}</p>
+  <form action="{% url  'index' %}" method="post">
+    {% csrf_token %}
+    {{form.as_table}}
+    <tr><td><input type="submit" value="click"></td></tr>
+  </form>
 </body>
 </html>

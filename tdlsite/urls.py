@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import HelloView
 
 urlpatterns = [
-    # path( アクセスするアドレス, 呼び出す処理, 名前を指定)
-    path('', views.index, name='index'),
+    # path( アクセスするアドレス, 呼び出す処理, htmlで {% url 'name' % として使う})
+    path('', HelloView.as_view() , name='index'),
 ]
