@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 # Allow all host headers
-ALLOWED_HOSTS = [".herokuapp.com"]
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1:8000','127.0.0.1']
 
 # Application definition
 
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'tdl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +137,7 @@ except ImportError:
     pass
 
 # Debug=Falseの時だけ実行する設定
-if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
+if DEBUG == False:
     import django_heroku
+    SECRET_KEY = os.environ['SECRET_KEY']
     django_heroku.settings(locals())
