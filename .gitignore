@@ -4,3 +4,4 @@ staticfiles
 db.sqlite3
 *.py[co]
 local_settings.py
+settings_from_github.py
